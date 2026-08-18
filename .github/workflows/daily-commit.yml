@@ -22,12 +22,12 @@ jobs:
 
       - name: Update file
         run: |
-          echo "$(date)" >> daily-commit.txt
+          echo "$(TZ='Asia/Kolkata' date)" >> daily-commit.txt
 
       - name: Commit and push changes
         run: |
           git config user.name "prajwalnikam"
           git config user.email "prajwalnikam2002@gmail.com"
           git add daily-commit.txt
-          git commit -m "Daily update: $(date -u)" || exit 0
+          git commit -m "Daily update: $(TZ='Asia/Kolkata' date)" || exit 0
           git push
